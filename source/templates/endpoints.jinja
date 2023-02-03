@@ -1,0 +1,16 @@
+from fastapi import APIRouter
+from fastapi.responses import JSONResponse
+
+router = APIRouter()
+
+{% macro endpoint_factory(endpoint) -%}
+{% filter indent(0, first=False) %}
+@router.{{endpoint.method}}("{{endpoint.path}}")
+async def {{ endpoint.name }}():
+    return JSONResponse({{endpoint.response}})
+{% endfilter %}
+{% endmacro -%}
+
+{% for endpoint in endpoints %}
+    {{ endpoint_factory(endpoint) }}
+{% endfor %}
