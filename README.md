@@ -30,7 +30,7 @@ def create_cat(cat: WriteCat):
     return cat
 ```
 
-will return
+as a route on the original app will return
 
 ```json
 {
@@ -40,7 +40,7 @@ will return
   "food_type": "dry"
 }
 ```
-on `POST /cats`. 
+on `POST /cats` on the mock server.
 
 This is especially useful for testing and local development.
 
