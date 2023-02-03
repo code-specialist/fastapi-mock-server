@@ -3,6 +3,8 @@
 Creates a mock server from an OpenAPI specification. The examples defined in the definition will be used as mock data. See [https://fastapi.tiangolo.
 com/tutorial/schema-extra-example/](https://fastapi.tiangolo.com/tutorial/schema-extra-example/)
 
+**Note:** This is a proof of concept and not available as a package yet.
+
 e. g.
 
 ```python
@@ -58,6 +60,8 @@ app = generate_mock_app("http://localhost:8071/openapi.json")
 if __name__ == '__main__':
     uvicorn.run(app=app, host="0.0.0.0", port=8080)
 ```
+
+**Hint**: The example app must be running on `http://localhost:8071` for the example above to work. (run `python example_app/app.py`) 
 
 **Example output**
 
