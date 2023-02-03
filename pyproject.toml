@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "openapimockserver"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+name = "fastapi-mock-server"
+version = "1.0.0"
+description = "Auto-generate a FastAPI-based mock server from an OpenAPI schema"
+authors = ["Yannic Schröer <yannic@code-specialist.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -12,7 +12,6 @@ openapi-schema-pydantic = "^1.2.4"
 fastapi = "^0.89.1"
 uvicorn = "^0.20.0"
 jinja2 = "^3.1.2"
-rich = "^13.3.1"
 
 
 [build-system]
