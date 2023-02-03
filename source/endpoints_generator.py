@@ -26,6 +26,7 @@ class Parameter(BaseModel):
     name: str
     required: bool
     type: ParameterType
+    default: str | None  # TODO: Use fancy type evaluation to get the correct type for things like bools and ints
 
 
 class Endpoint(BaseModel):
@@ -95,7 +96,8 @@ def generate_endpoints(openapi_url: str):
                     parameters = [Parameter(
                         name=parameter.name,
                         required=parameter.required,
-                        type=ParameterType(parameter.param_schema.type)
+                        type=ParameterType(parameter.param_schema.type),
+                        default=parameter.param_schema.default
                     ) for parameter in path_method.parameters]
                 else:
                     parameters = []

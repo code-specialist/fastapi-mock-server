@@ -13,7 +13,7 @@ cat_list: CatList = CatList(cats=[])
 
 
 @app.get("/cats", response_model=CatList)
-def read_cats(odd_only: bool):
+def read_cats(odd_only: bool = False):
     """ Returns a list of all cats """
     if odd_only:
         return CatList(cats=[cat for cat in cat_list.cats if cat.id % 2 == 1])
@@ -29,7 +29,7 @@ def create_cat(cat: WriteCat):
 
 
 @app.get("/cats/{cat_id}", response_model=Cat)
-def read_cat(cat_id: int):
+def read_cat(cat_id: int, some_param: str = "some_default"):
     """ Returns a single cat by ID """
     if cat_id >= len(cat_list.cats) or cat_id < 0:
         return Response(status_code=404, content="Cat not found")
