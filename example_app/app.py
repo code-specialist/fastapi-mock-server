@@ -13,8 +13,10 @@ cat_list: CatList = CatList(cats=[])
 
 
 @app.get("/cats", response_model=CatList)
-def read_cats():
+def read_cats(odd_only: bool):
     """ Returns a list of all cats """
+    if odd_only:
+        return CatList(cats=[cat for cat in cat_list.cats if cat.id % 2 == 1])
     return cat_list
 
 

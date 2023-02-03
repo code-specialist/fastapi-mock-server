@@ -6,7 +6,8 @@ router = APIRouter()
 {% macro endpoint_factory(endpoint) -%}
 {% filter indent(0, first=False) %}
 @router.{{endpoint.method}}("{{endpoint.path}}")
-async def {{ endpoint.name }}():
+async def {{ endpoint.name }}({% for parameter in endpoint.parameters %}{{ parameter.name }}: {{ parameter.type.name }}{% if not parameter.required %} | None{% endif %}{% endfor
+        %}):
     return JSONResponse({{endpoint.response}})
 {% endfilter %}
 {% endmacro -%}
